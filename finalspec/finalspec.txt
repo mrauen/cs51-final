@@ -1,0 +1,43 @@
+The following is a guide to the files of the CS51 Final Project for Sitan Chen, Sami Ghoche, Matt Rauen, and Tom Silver. April 2013.
+
+events.py
+
+Triggers actions after a user rates an item or asks for a prediction.
+
+graph.py
+
+Contains type definitions for graph and nodes, and methods for traversing, updating, and deleting. Also contains brand graph and item graph.
+
+pathfinder.py
+
+Contains pathfinder (based on Dijsktra's) to be used in Graph.
+
+fibonacciheap.py
+
+Contains Fibonacci Heap algorithm to be used in Dijkstra.
+
+helpers.py
+
+Contains methods for:
+	update_mean
+	update_stdev
+	update_brands
+	update_globals
+	
+learning.py
+
+Contains machine learning methods to improve confidence functions.
+
+globals.py*
+
+Contains statistics such as success rates, size of graph, etc.
+
+recommendations.py*
+
+Contains algorithms for recommendations (cool extension).
+
+users.py
+
+Contains type definitions and values for user.
+
+*TO DO
