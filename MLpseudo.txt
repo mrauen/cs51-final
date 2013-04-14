@@ -1,61 +1,61 @@
-// We are given two nodes (items or brands)
+# We are given two nodes (items or brands)
 Node1, Node2
 
-// This type is a rating for both nodes in a link; r1, r2 \in {1,2,3,4,5}
+# This type is a rating for both nodes in a link; r1, r2 in {1,2,3,4,5}
 type rating = int*int
 
-// This is the set of all differences of ratings between Node1 and Node2. 
-// For example, if a user rates Node1 as a 1 and Node2 as a 3, then 2 (or -2, depending on orientation) will be added to this set.
+# This is the set of all differences of ratings between Node1 and Node2. 
+# For example, if a user rates Node1 as a 1 and Node2 as a 3, then 2 (or -2, depending on orientation) will be added to this set.
 type differences = int list
 
-// Mean of all points in differences
+# Mean of all points in differences
 type m = float
 
-// Standard Deviation of all points in differences 
+# Standard Deviation of all points in differences 
 type s = float
 
-// Size of differences
+# Size of differences
 type n = int
 
-// Confidence, which will be determined via machine learning function
+# Confidence, which will be determined via machine learning function
 type c = float
 
-// List of predictions given to users in the past
+# List of predictions given to users in the past
 type predicted = (int*user) list
 
-// List of ratings that the same users supplied after purchasing
+# List of ratings that the same users supplied after purchasing
 type purchased = (int*user) list
 
-// This type represents a pair of *items* when confidence is being calculated for real links, and a pair of *brands* when confidence is being calculated for virtual links
+# This type represents a pair of *items* when confidence is being calculated for real links, and a pair of *brands* when confidence is being calculated for virtual links
 type link = (m,s,n,c,predicted,purchased)
 
-// Given two variables relating to the same pair:
+# Given two variables relating to the same pair:
 Let x be of type link
 Let r be of type rating
 
-// Updating x given r:
-// Calculate new m
-SITANNNNNNNNNNNN CHENNNNNNNNN
+# Returns (new mean, new stdev) given addition of new element
+def update(m, std, n, x):
+	newm = (m*n + x)/(n+1)
+	diff = (newm - m)*(newm - m)*n+(x-newm)*(x-newm)
+	newstd = sqrt((std * std * n + diff)/(n+1))
+	return (newm, newstd)
 
-// Calculate new s
-SITANNNNNNNNNNNN CHENNNNNNNNN
+# Increment n
+Let inc (n_0 : n) : n = n_1++
 
-// Increment n
-Let inc (n_0 : n) : n = n_1 + 1
-
-// Update c
-// This function gives a new confidence. It is the one which will be modified with higher order functions; k_1 is a constant float which will be modified.
+# Update c
+# This function gives a new confidence. It is the one which will be modified with higher order functions; k_1 is a constant float which will be modified.
 Let f  (n_0 : n) (s_0 : s) : c= 
 k_1 * log(n_0 / s_0)
 
-// Update predicted
+# Update predicted
 Add this user and prediction to the predicted list
 
-// purchased will be updated after user rates
+# purchased will be updated after user rates
 
-// Learning the confidence function f by comparing predictions to user responses. This higher order function will be executed every time purchased is updated.
+# Learning the confidence function f by comparing predictions to user responses. This higher order function will be executed every time purchased is updated.
 
-// First, calculate the actual confidence. 
+# First, calculate the actual confidence. 
 Let count = 0
 Let correct_count = 0
 For each pur_pair in purchased:
@@ -65,9 +65,31 @@ For each pur_pair in purchased:
 	count++
 actual_confidence = correct_count / count
 
-// Now compose a set of actual values, which we will train f to fit
+# Now compose a set of actual values, which we will train f to fit
 actual_values = (n, log(s/c)) list
 
 Open scikit-learn package
 use sklearn.linear_model.LinearRegression for n, log(s/c)
 return k_1
+
+
+# Dijkstra's: returns shortest path between start and end in graph:
+def Dijkstra's(G, start, end):
+	dist = {start : 0}
+	prev = {}
+	Q = Heap(start : 0)
+	for v in G:
+		dist[v] = -1
+		prev[v] = None
+	iterator = start
+	while(!Q.empty())
+		u = Q.pop()
+		if dist[u] == -1:
+			break
+		for neighbor in G.array[u]:
+			alt = dist[u] + G.getDist(u,neighbor)
+			if alt < dist[neighbor]:
+				dist[neighbor] = alt
+				prev[neighbor] = u;
+				Q.insert(neighbor, dist[neighbor])
+	return dist[end]
