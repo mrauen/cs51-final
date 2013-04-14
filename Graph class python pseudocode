@@ -1,0 +1,54 @@
+class Edge:
+  def __init__ (self, name = "", neighbor_pointer = None, diff_mean = 0, stdev = 0, num_ratings = 0, conf = 0):
+	self.name = name
+	self.neighbor_pointer = neighbor_pointer
+	self.diff_mean = diff_mean
+	self.stdev = stdev
+	self.num_ratings = num_ratings
+	self.conf = conf
+	
+class Item:
+	def __init__ (self, id = 0, brand = "", nom_size = 0, act_size = 0,
+		edge_list = {} ) : # this is where Edge() would go
+	self.id = id
+	self.brand = brand
+	self.nom_size = nom_size
+	self.act_size = act_size
+
+class User:
+	def __init__ (self, user_id = 0, username = "", itemidlist = {}):
+		self.user_id = user_id
+		self.username = username
+		self.itemidlist = itemidlist
+	
+class Graph:
+	def __init__ (self, item_list = {}): # this is where Item() would go
+		self.item_list = item_list
+	def empty_graph (self):
+		self.item_list = {}
+	# check if item is in graph	
+	def in_graph (self, item)
+		for node in self.item_list 
+			if node.id == item.id: 
+				return True
+		else return False
+		
+	def insert (self, item, user)
+		# if item is not in list of items in graph then add to the list
+		if in_graph (self, item) == False:
+			self.item_list.append(item) 
+			# and 1- update the empty edge_list so that it 
+			# 		 contains edges pointing to all items of the user,
+			# and 2- update all items pointed to in each edge so that they
+			# 	  	 contain an extra edge pointing to the new item
+		else # find item in self.item_list and update graph in the same way as case directly above	
+			
+	
+	def pathfinder (self, item, useritems)		
+		# Sitan's code on Dijkstra's
+		
+	def predictor (path)	# path comes from another module where Dijkstra's or the fip heap is done
+		# (Sigma diff_mean*num_ratings) / Sigma num_ratings
+	
+	def stdevupdate (self, edge)
+		# Sitan's way of making it constant time
