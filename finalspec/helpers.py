@@ -1,12 +1,11 @@
 # helpers.py
 # Contains methods for update_stdev, update_mean, update_brands
 
-def update_stdev(m, std, n, x):
+def update(m, std, n, x):
+	newm = (m*n + x)/(n+1)
 	diff = (newm - m)*(newm - m)*n+(x-newm)*(x-newm)
-	return sqrt((std * std * n + diff)/(n+1))
-	
-def update_mean(m, std, n, x):
-	return (m*n + x)/(n+1)
+	newstd = sqrt((std * std * n + diff)/(n+1))
+	return (newm, newstd)
 		
 def update_brands
 	# TO DO

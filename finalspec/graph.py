@@ -67,6 +67,4 @@ class Graph:
 		# (Sigma diff_mean*num_ratings) / Sigma num_ratings
 
 	def edge_update (self, edge)
-		meanupdate # defined in helpers
-		stdevupdate # defined in helpers
-
+		update # defined in helpers

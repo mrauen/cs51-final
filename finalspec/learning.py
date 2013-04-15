@@ -28,4 +28,4 @@ actual_values = (n, log(s/c)) list
 
 Open scikit-learn package
 use sklearn.linear_model.LinearRegression for n, log(s/c)
-return k_1
+update k_1
