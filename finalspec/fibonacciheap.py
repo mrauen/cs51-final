@@ -37,7 +37,7 @@ def consolidate(heap):
   while True:
     counter = 0;
     for node1, node2 in heap[1]:
-      if node1 != node2 && node1[2] == node2[2]:
+      if node1 != node2 & node1[2] == node2[2]:
         small_node = smaller_key(node1, node2);
         big_node = bigger_key(node1, node2);
         heap = remove(big_node, heap);
@@ -45,7 +45,7 @@ def consolidate(heap):
         small_node[3] = small_node[3].append(big_node)
         counter = 1;
         break;
-    if counter = 0:
+    if counter == 0:
       break;
   return heap;
 
@@ -53,7 +53,7 @@ def find_min(heap):
   min = heap[1][1];
   for node in heap[1]:
     min = smaller_key(min, node);
- return min;
+  return min
 
 def extract_min(heap):    
   small_node = find_min(heap);
@@ -75,7 +75,7 @@ def cut(node, heap):
 
 def decrease_key(node, new_key, heap):
   node[0] = new_key;
-  if node[5] != None && node[5][0] > new_key:
+  if node[5] != None & node[5][0] > new_key:
     heap = insert(node, heap);
     cut(node, heap);
   return heap;
