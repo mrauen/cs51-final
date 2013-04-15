@@ -1,7 +1,17 @@
+# node[0] = key
+# node[1] = value
+# node[2] = rank
+# node[3] = children
+# node[4] = marked
+# node[5] = parent
+
+# heap[0] = min root
+# heap[1] = list of roots
+
 def find_min(heap):
   return heap[0];
 
-def compare_keys(node1, node2):
+def smaller_key(node1, node2):
   if (node1[0] < node2[0]):
     return node1;
   else:
@@ -14,7 +24,7 @@ def bigger_key(node1, node2):
     return node1;
 
 def merge(heap1, heap2):
-  return [compare_keys(node1, node2)[0], heap1[1]+heap2[1]];
+  return [smaller_key(node1, node2)[0], heap1[1]+heap2[1]];
 
 def insert(node, heap):
   return merge([node, [node]], heap);
@@ -28,7 +38,7 @@ def consolidate(heap):
     counter = 0;
     for node1, node2 in heap[1]:
       if node1 != node2 && node1[2] == node2[2]:
-        small_node = compare_keys(node1, node2);
+        small_node = smaller_key(node1, node2);
         big_node = bigger_key(node1, node2);
         heap = remove(big_node, heap);
         small_node[2] = small_node[2] * 2;
@@ -42,7 +52,7 @@ def consolidate(heap):
 def find_min(heap):
   min = heap[1][1];
   for node in heap[1]:
-    min = compare_keys(min, node);
+    min = smaller_key(min, node);
  return min;
 
 def extract_min(heap):    
@@ -51,10 +61,26 @@ def extract_min(heap):
   for node in small_node[3]:
     heap = insert(node, heap);
   heap = consolidate(heap);
-  heap[0] = find_min(heap);  
+  heap[0] = find_min(heap);
+  return heap[0];  
 
-def decrease_key(node, new_key):
+def cut(node, heap):
+  node[5][3].remove(node);
+  if node[5][4]:
+    node[5][4] = False;
+    heap = cut(node[5], heap);
+  else:
+    node[5][4] = True;
+  return heap;
+
+def decrease_key(node, new_key, heap):
+  node[0] = new_key;
+  if node[5] != None && node[5][0] > new_key:
+    heap = insert(node, heap);
+    cut(node, heap);
+  return heap;
 
 def delete(node, heap):
   decrease_key(node, float('-inf'));
   extract_min(heap);
+  return heap;

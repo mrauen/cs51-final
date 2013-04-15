@@ -1,5 +1,5 @@
 # helpers.py
-# Contains methods for update_stdev, update_mean, update_brands
+# Contains methods for updating everything
 
 def update(m, std, n, x):
 	newm = (m*n + x)/(n+1)

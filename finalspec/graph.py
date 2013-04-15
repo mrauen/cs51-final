@@ -22,6 +22,7 @@ class Edge:
 	self.num_ratings = num_ratings
 	self.conf = conf
 	self.ratings = ratings
+	self.scaling_factor = scaling_factor #for brands, not accessed in item
 	
 class Item:
 	def __init__ (self, id = 0, brand = "", nom_size = 0, act_size = 0,
@@ -33,12 +34,12 @@ class Item:
 	
 class Brand:
 	def __init__ (self, id = 0, brand = "", nom_size = 0, act_size = 0,
-		edge_list = {} ) : # this is where Edge() would go
+		edge_list = {}, item_list = {} ) : # this is where Edge() would go
 	self.id = id
-	self.scaling_factor = scaling_factor
 	
 class Graph:
-	def __init__ (self, item_list = {}): # this is where Item() would go
+	def __init__ (self, name = "", item_list = {}): # this is where Item() would go
+		self.name = name
 		self.item_list = item_list
 	def empty_graph (self):
 		self.item_list = {}
