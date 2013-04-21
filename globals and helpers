@@ -1,0 +1,60 @@
+>>> #Helpers.py
+>>> 
+>>> #Global Variables
+>>> users_list = []
+>>> current_user_id = 0
+>>> current_item_id = 0
+>>> current_brand_id = 0
+>>> num_items = 0
+>>> num_edges = 0
+>>> num_ratings = 0
+>>> edges_item = 0
+>>> ratings_item = 0
+>>> num_brands = 0
+
+# Creates new user in users_list, each user has an id and a list of items he has purchased
+def new_user ():
+  global users_list
+	global current_user_id
+	users_list.append[]
+	current_user_id = current_user_id+1
+
+# updates users_list when user purchases new item	
+def update_users (userid, item):
+	global users_list
+	global current_user_id
+	users_list[userid].append = item.id 
+	
+def new_item (graph, item):	
+	global current_item_id
+	item.id = current_item_id
+	current_item_id = current_item_id + 1
+	graph.itemlist.append item 
+	
+	
+def buy_event (itemgraph, brandgraph, list_of_users[userid], item):
+	update_users (userid, item)
+	itemgraph.insert (itemgraph, item, userid) 
+			# 1- update the edge_list so that it 
+			# 		 contains edges pointing to all items of the user,
+			#	which is: (
+			# and 2- update all items pointed to in each edge so that they
+			# 	  	 contain an extra edge pointing to the new item
+	brandgraph.update (brandgraph, brand, userid)
+	update_globals (itemgraph, brandgraph)		
+
+	
+	
+>>> def edges_per_item (num_items, num_edges):
+	if num_items != 0 :
+		return num_edges/num_items
+	else:
+		print ('No Items')
+		
+>>> def ratings_per_item (num_items, num_edges):
+	if num_items != 0 :
+		return num_edges/num_items
+	else:
+		print ('No Items')
+
+		
