@@ -18,7 +18,7 @@ def pathfinder (self, item, useritems):
                         if alt < dist[edge.neighbor_pointer]:
                                 dist[edge.neighbor_pointer] = alt
                                 prev[edge.neighbor_pointer] = u;
-                                Q.insert(neighbor, dist[edge_neighbor_pointer])
+                                Q.insert(edge.neighbor_pointer, dist[edge.neighbor_pointer])
         M = 0
         candidate = useritems[0]
         for item in useritems:
@@ -35,3 +35,10 @@ def pathfinder (self, item, useritems):
                 ratings += info[1]
                 cursor = item[prev]
         return (M, diff / ratings)
+
+vs = []
+for n in range(0,n):
+        vs.append(Item(n,0,"",0,0,{}))
+for v in vs:
+        for k in range(0,n):
+                v.edge_list

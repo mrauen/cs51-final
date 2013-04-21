@@ -14,8 +14,7 @@ class Ratings:
   	self.successes = successes
   	
 class Edge:
-  def __init__ (self, name = "", neighbor_pointer = None, diff_mean = 0, stdev = 0, num_ratings = 0, conf = 0, ratings = Ratings):
-	self.name = name
+  def __init__ (self, neighbor_pointer = None, diff_mean = 0, stdev = 0, num_ratings = 0, conf = 0, ratings = Ratings):
 	self.neighbor_pointer = neighbor_pointer
 	self.diff_mean = diff_mean
 	self.stdev = stdev
@@ -31,6 +30,7 @@ class Item:
 	self.brand = brand
 	self.nom_size = nom_size
 	self.act_size = act_size
+	self.edge_list = edge_list
 	
 class Brand:
 	def __init__ (self, id = 0, brand = "", nom_size = 0, act_size = 0,
@@ -69,3 +69,5 @@ class Graph:
 
 	def edge_update (self, edge)
 		update # defined in helpers
+
+
