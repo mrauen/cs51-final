@@ -1,17 +1,20 @@
-#ratings are from 1 to 10
-raterange = 9
+#ratings are from 1 to 100
+raterange = 99
 
 def conf(ratings):
     interval = (ratings[-1]-ratings[0])/raterange
-    c = len(ratings)
+    c = float (len(ratings))
     perc = 1.0
-    mean = sum(ratings)/c
+    mean = float (raterange/2)
     inside = ratings
     while (perc>interval):
         if ((mean-inside[0])>(inside[-1]-mean)):
+            interval = float (2.0*(mean-inside[0])/raterange)
             inside = inside[1:]
         else:
+            interval = float (2.0*(inside[-1]-mean)/raterange)
             inside = inside[:-1]
-        interval = (inside[-1]-inside[0])
-        perc = len(inside)/c
-    return 1-perc
+        perc = float (len(inside)/c)
+        if (interval == 0.0):
+            return 1.0
+    return 1-interval
