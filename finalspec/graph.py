@@ -44,13 +44,18 @@ class Graph:
 	def empty_graph (self):
 		self.item_list = {}
 	# check if item is in graph	
-	def in_graph (self, item)
+	def in_graph (self, item):
 		for node in self.item_list 
 			if node.id == item.id: 
 				return True
 		else return False
-		
-	def insert (self, item, user)
+	
+	def getEdge (a, b):
+		for edge in a.edge_list:
+			if edge.neighbor_pointer = b:
+				return (edge.ratings,edge.num_ratings)
+
+	def insert (self, item, user):
 		# if item is not in list of items in graph then add to the list
 		if in_graph (self, item) == False:
 			self.item_list.append(item) 
@@ -64,10 +69,10 @@ class Graph:
 	def findpath (G, start, end):
 		pathfinder(G, start, end) # defined in Pathfinder
 		
-	def predictor (path)	# path comes from another module where Dijkstra's or the fip heap is done
+	def predictor (path):	# path comes from another module where Dijkstra's or the fip heap is done
 		# (Sigma diff_mean*num_ratings) / Sigma num_ratings
 
-	def edge_update (self, edge)
+	def edge_update (self, edge):
 		update # defined in helpers
 
 
