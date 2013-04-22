@@ -3,17 +3,19 @@
 import random
 import sys
 import fileinput
+import fibonacciheap
 
 def pathfinder (self, item, useritems):
   dist = {item : 0}
   prev = {}
-  Q = Heap(item : 0)
+  Q = fibonacciheap.empty_heap
+  fibonacciheap.insert_new_pair(item, 0, Q)
   for v in self.item_list:
     dist[v] = -1
     prev[v] = None
   iterator = start
-  while(!Q.empty())
-    u = Q.pop()
+  while(fibonacciheap.is_empty(Q))
+    u = fibonacciheap.extract_min(Q)
     if dist[u] == -1:
       break
     for edge in u.edge_list:
@@ -21,7 +23,7 @@ def pathfinder (self, item, useritems):
       if alt < dist[edge.neighbor_pointer]:
         dist[edge.neighbor_pointer] = alt
         prev[edge.neighbor_pointer] = u;
-        Q.insert(edge.neighbor_pointer, dist[edge.neighbor_pointer])
+        fibonacciheap.insert_new_pair(edge.neighbor_pointer, dist[edge.neighbor_pointer],Q)
   M = 0
   candidate = useritems[0]
   for item in useritems:
