@@ -11,6 +11,9 @@
 def empty_heap:
 [None, []];
 
+def is_empty(heap):
+  heap[0] = None & heap[1] = []
+
 def insert_new_pair(key, value, heap):
    insert([key, value, 1, None, false, None], heap);
 

@@ -32,14 +32,12 @@ def pathfinder (self, item, useritems):
       candidate = item
   cursor = prev[candidate]
   diff = 0
-  ratings = 0
   while(cursor2 != item):
     tmp = prev[cursor]
     info = getEdge(tmp,cursor)
     diff += info[0]*info[1]
-    ratings += info[1]
     cursor = item[prev]
-  return (M, diff / ratings)
+  return (M, diff)
 
 if(len(sys.argv) != 2):
   print "Usage: file"
