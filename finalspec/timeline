@@ -1,0 +1,23 @@
+By April 21st:
+•  Basic Dijkstra’s algorithm working
+•	Fibonacci heap working
+•	Most helper functions, global variables, events and brand infrastructure done
+•	Participate in the iLab python web integration seminar (from 10am to 8pm on April 20th and 21st)
+•	Finalize model for virtual edge confidence with relevant variables to be determined by machine learning algorithm
+•	Write pseudocode algorithm for machine learning 
+
+By April 28th:
+•	Finish coding up machine learning algorithm (to get accurate confidence values for virtual edges)
+•	Fix our modified implementation of Dijkstra’s and the Fibonacci heap to account for virtual edges
+•	Write testing functions to test the entire project
+•	Find accurate algorithm for recommending good-fit items
+•	Write interface and pseudocode for recommending good-fit items
+
+By May 5th:
+•	Finish coding up extra feature (recommending good-fit items)
+•	Test entire project
+•	Finish integration into website
+•	Hide some implementations from users
+•	Test on real world application and adjust machine learning model and algorithm and Dijktra’s cutoff number of targets based on accuracy and speed
+•	Test again and finalize
+
