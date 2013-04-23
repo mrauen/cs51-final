@@ -1,0 +1,19 @@
+We have implemented Dijkstra’s algorithm to work on real edges but we have not tested its correctness yet (See pathfinder.py)
+
+We have implemented a Fibonacci heap but we have not tested its correctness yet (See fibonacciheap.py)
+
+We have laid out the skeleton of our entire core project (See all modules)
+
+We have defined the interfaces for users, graphs, items, edges and brands and written pseudocode for most of them and real code for some (See users.py graph.py and brands.py)
+
+We have defined our helper functions, events, constant-time-access global variables (See helpers.py, events.py, statistics.py) 
+
+We have discussed the machine learning algorithm in depth and have reached the following conclusions:
+•  Our predictions will return a tuple of a predicted rating, and the confidence of our prediction. For example, for a rating scale of 1 to 500, if our predicted rating is 200 and our predicted confidence is 90% (so uncertainty will be 10%), if a user buys the item and rates it within an interval from 175 (which is 200 – (500)/2 ) and 225 (which is 200 + (10%500)/2 ) will mean that our prediction was correct and will increase our success rate which is defined as (total number of correct predictions/ total number of predictions)
+•	Machine learning will be used solely to determine the confidence values given to real as well as virtual edges (with similar algorithms but different variables)
+•	Intuitively, the confidence values should only depend on the number of ratings we have for each edge, and the standard deviation of the mean of the rating differences for each edge.
+•	The function which when given num_ratings and stdev would return the confidence of an edge should intuitively be along the lines of C1*log(1/stdev) + C2*sqrt(num_ratings), with the specific model to be determined later on.
+•	The goal of machine learning is to determine C1 and C2 through regression on previously acquired data on our confidence function and the corresponding success rate (defined above) such that our success rate will be as close to 100% as possible. 
+•	We will have to start with scalars that give a very high confidence value because starting with low confidence will increase the size of our correct prediction interval (as defined above) which will make our predictions more successful but a lot less confident and ultimately worthless.   
+
+We have applied and been admitted to the “Coding Bootcamp: Build a Web App with Python” workshop on April 20th & 21st from 10am - 8pm at the I-lab, where we hope to get acquainted to ways of making our project more readily dynamic and responsive to user input and user interaction. 
