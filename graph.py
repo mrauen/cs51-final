@@ -2,9 +2,6 @@
 # Contains type definitions for graph and nodes, and methods for traversing, updating, and deleting. 
 # Also contains brand graph and item graph.
 
-import helpers
-import pathfinder
-
 # prediction_list: a list of (user ID, number of edges in path, prediction)
 # items in prediction_list have not been rated
 
@@ -63,10 +60,9 @@ class Item:
 		self.is_new = is_new
 		self.neighbors_list = [x[0] for x in self.edge_list]
 		
-class Brand:
-	def __init__ (self, id = -1, brand = "", nom_size = 0, act_size = 0,
-		edge_list = {}, item_list = {} ) : # this is where Edge() would go
-	self.id = id
+##class Brand:
+##	def __init__ (self, id = -1, brand = "", nom_size = 0, act_size = 0, edge_list = {}, item_list = {} ) :
+##                self.id = id
 
 class Graph:
 	def __init__ (self, name = None, item_list = None): # this is where Item() would go
@@ -84,11 +80,6 @@ class Graph:
 	def findpath (G, start, end):
 		pathfinder(G, start, end) # defined in Pathfinder
 
-	def predictor (path)	# path comes from another module where Dijkstra's or the fip heap is done
-		# (Sigma diff_mean*num_ratings) / Sigma num_ratings
-
-	def edge_update (self, edge)
-		update # defined in helpers
 		
 class User:
 	def __init__ (self, name = None, id = None, itemrating_list = None):
