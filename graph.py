@@ -8,8 +8,8 @@
     
 class Edge:
 	def __init__ (self, neighbor_id = None, list_of_diffs = None, mean_of_diffs = None, stdev = None, num_ratings = None, conf = None):
-		if neighbor_pointer is None:
-			neighbor_pointer = None
+		if neighbor_id is None:
+			neighbor_id = None
 		if list_of_diffs is None:
 			list_of_diffs = []
 		if mean_of_diffs is None:
@@ -57,13 +57,28 @@ class Item:
 		self.num_ratings = num_ratings
 		self.avg_rating = avg_rating
 		self.edge_list = edge_list
-		self.is_new = is_new
-		self.neighbors_list = [x[0] for x in self.edge_list]
+		self.is_new = is_new	
+	def neighbors_list (self):
+		return [x.neighbor_id for x in self.edge_list]
 		
-##class Brand:
-##	def __init__ (self, id = -1, brand = "", nom_size = 0, act_size = 0, edge_list = {}, item_list = {} ) :
-##                self.id = id
-
+class Brand:
+	def __init__ (self, id = None, name = None, edge_list = None, item_list = None, is_new = None ) :
+        if id is None:
+        	id = -1
+        if name is None:
+        	name = ""
+        if edge_list is None:
+        	edge_list = []
+        if item_list is None:
+        	item_list = []
+        if is_new is None:
+        	is_new = True
+        self.id = id
+		self.name = name
+		self.edge_list = edge_list
+		self.item_list = item_list
+		self.is_new = is_new
+		
 class Graph:
 	def __init__ (self, name = None, item_list = None): # this is where Item() would go
 		if name is None:

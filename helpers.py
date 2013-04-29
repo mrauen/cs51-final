@@ -87,7 +87,7 @@ def update_existing_item (item, userid, rating):
 		pass
 	else:	
 		for (neighbor_id, neighbor_rating) in users_list[userid]:
-			if neighbor_id in item.neighbors_list:
+			if neighbor_id in item.neighbors_list():
 				edge = item.edge_list[item.edge_list.index (neighbor_id)]
 				edge.list_of_diffs.append (rating - neighbor_rating)
 				edge.num_ratings += 1
@@ -114,7 +114,7 @@ def update_user_items_existing (itemgraph, item, userid, rating):
 				pass
 			else:	
 				user_item = get_item_from_id (neighbor_id)
-				if item.id in user_item.neighbors_list:
+				if item.id in user_item.neighbors_list():
 					edge = user_item.edge_list[user_item.edge_list.index (item.id)]
 					edge.list_of_diffs.append (neighbor_rating - rating)
 					edge.num_ratings += 1
