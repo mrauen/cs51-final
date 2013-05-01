@@ -8,14 +8,14 @@
 # heap[0] = min root
 # heap[1] = list of roots
 
-def empty_heap:
-[None, []];
+def empty_heap():
+  [None, []]
 
 def is_empty(heap):
-  heap[0] = None & heap[1] = []
+  heap[0] == None and heap[1] == []
 
 def insert_new_pair(key, value, heap):
-   insert([key, value, 1, None, false, None], heap);
+   insert([key, value, 1, None, False, None], heap)
 
 def find_min(heap):
   return heap[0];
@@ -46,7 +46,7 @@ def consolidate(heap):
   while True:
     counter = 0;
     for node1, node2 in heap[1]:
-      if node1 != node2 && node1[2] == node2[2]:
+      if node1 != node2 and node1[2] == node2[2]:
         small_node = smaller_key(node1, node2);
         big_node = bigger_key(node1, node2);
         heap = remove(big_node, heap);
@@ -55,7 +55,7 @@ def consolidate(heap):
         big_node[5] = small_node;
         counter = 1;
         break;
-    if counter = 0:
+    if counter == 0:
       break;
   return heap;
 
@@ -63,7 +63,7 @@ def find_new_min(heap):
   min = heap[1][0];
   for node in heap[1]:
     min = smaller_key(min, node);
- return min;
+  return min
 
 def extract_min(heap):    
   small_node = find_min(heap);
@@ -89,7 +89,7 @@ def cut(node, heap):
 
 def decrease_key(node, new_key, heap):
   node[0] = new_key;
-  if node[5] != None && node[5][0] > new_key:
+  if node[5] != None and node[5][0] > new_key:
     cut(node, heap);
   return heap;
 
