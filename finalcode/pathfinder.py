@@ -5,26 +5,32 @@ import sys
 import fileinput
 import fibonacciheap
 import graph
+import math
+import helpers
 
-def pathfinder (self, item, useritem_ids):
+def pathfinder (self, item_id, useritem_ids):
   dist = {}
   prev = {}
   Q = fibonacciheap.empty_heap()
-  Q=fibonacciheap.insert_new_pair(item, 0, Q)
+  Q=fibonacciheap.insert_new_pair(item_id, 0, Q)
   for v in self.item_list:
-    dist[v] = 1000000
-    prev[v] = None
-  dist[item] = 0
+    dist[v.id] = 1000000
+    prev[v.id] = None
+  dist[item_id] = 0
   while(not fibonacciheap.is_empty(Q)):
-    u = fibonacciheap.extract_min(Q)
-    if dist[u[1]] == 1000000:
+    u_id = fibonacciheap.extract_min(Q)[0]
+
+    for i in self.item_list:
+      if i.id == u_id:
+        u = i
+    if dist[u_id] == 1000000:
       break
     for edge in u.edge_list:
-      alt = dist[u.id] + math.log(edge.conf)
+      print(edge.neighbor_id)
+      alt = dist[u_id] + math.log(edge.conf)
       if alt < dist[edge.neighbor_id]:
-
         dist[edge.neighbor_id] = alt
-        prev[edge.neighbor_id] = u.id;
+        prev[edge.neighbor_id] = u_id;
         Q = fibonacciheap.insert_new_pair(edge.neighbor_id, dist[edge.neighbor_id],Q)
   M = 0
   candidate = useritem_ids[0].id

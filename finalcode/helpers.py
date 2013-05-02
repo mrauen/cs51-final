@@ -25,7 +25,8 @@ def ratings_per_item (num_items, num_edges):
         print "No Items"
 	
 def get_item_from_id (itemgraph, id):
-	itemgraph.itemlist[itemgraph.itemid_list.index (id)]
+	itemid_list = itemgraph.itemid_list
+	itemgraph.item_list[itemid_list.index (id)]
 	
 # Creates new user in users_list, each user has an id and a list of items he has purchased
 def create_user (user):
@@ -65,21 +66,21 @@ def update_new_item (item, userid, rating):
 def update_user_items_new (itemgraph, item, userid, rating):
     global users_list
     if users_list[userid].itemrating_list == []:
-            pass
+      pass
     else:	
-            for (neighbor_id, neighbor_rating) in users_list[userid]:
-                    if neighbor_id == item.id:
-                            pass
-                    else:	
-                            user_item = get_item_from_id (neighbor_id)
-                            edge = Edge ()
-                            edge.neighbor_id = item.id
-                            edge.list_of_diffs.append (neighbor_rating - rating)
-                            edge.num_ratings += 1
-                            edge.mean_diffs =  sum (list_of_diffs) / edge.num_ratings
-                            edge.stdev = 0
-                            edge.conf = conf(list_of_diffs)
-                            user_item.edge_list.append (edge)	
+      for (neighbor_id, neighbor_rating) in users_list[userid]:
+        if neighbor_id == item.id:
+          pass
+        else:	
+          user_item = get_item_from_id (neighbor_id)
+          edge = Edge ()
+          edge.neighbor_id = item.id
+          edge.list_of_diffs.append (neighbor_rating - rating)
+          edge.num_ratings += 1
+          edge.mean_diffs =  sum (list_of_diffs) / edge.num_ratings
+          edge.stdev = 0
+          edge.conf = conf(list_of_diffs)
+          user_item.edge_list.append (edge)	
 				
 def update_existing_item (item, userid, rating):
 	global users_list

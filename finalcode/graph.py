@@ -62,7 +62,7 @@ class Item:
     return [x.neighbor_id for x in self.edge_list]
     
 class Brand:
-  def __init__ (self, id = None, name = None, edge_list = None, item_list = None, is_new = None):
+  def __init__ (self, id = None, name = None, edge_list = None, item_list = None, is_new = None ) :
     if id is None:
       id = -1
     if name is None:
@@ -87,16 +87,15 @@ class Graph:
       item_list = []
     self.name = name
     self.item_list = item_list
+  
+  def itemid_list() :
+    return [x[0] for x in self.item_list]
   def empty_graph (self):
     self.item_list = []
   # check if item is in graph  
-  def get_edge (start, end):
-    for e in start.edge_list:
-      if e.neighbor_id == end:
-        return (e.num_ratings, e.conf)
-    return None
-  def findpath (item_id, useritem_ids):
-    pathfinder(G, item, useritems) # defined in Pathfinder
+
+  def findpath (G, start, end):
+    pathfinder(G, start, end) # defined in Pathfinder
 
     
 class User:
