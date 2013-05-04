@@ -69,9 +69,7 @@ def make_purchases(max_events):
     itemid = random.randint(0,num_items-1)
     item = items_list[itemid]
     purchases = [purch[0] for purch in user.itemrating_list]
-    if (item in purchases):
-      pass
-    else:
+    if (item not in purchases):
       while abs(item.nom_size - user.size) > 20:
         itemid = random.randint(0,num_items-1)
         item = items_list[itemid]
@@ -80,7 +78,7 @@ def make_purchases(max_events):
     
 init_rand_users()
 get_items()
-make_purchases(500)
+make_purchases(300)
 print(findcoeffs.find_coeffs())
 
 # choose 2nd parameter from conf, num, or basic
