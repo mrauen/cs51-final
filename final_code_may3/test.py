@@ -7,9 +7,10 @@ import recommendations
 import findcoeffs
 
 max_users = 6
-num_items = 30
+num_items = 15
 def dump (G, parameter):
   adjmat = defaultdict(dict)
+  c = 0
   print("Name: " + G.name)
   num_v = len(G.item_list)
   for i in G.item_list:
@@ -18,6 +19,7 @@ def dump (G, parameter):
 
   for i in G.item_list:
     for j in i.edge_list:
+      c += 1
       if (parameter == "conf"):
         adjmat[i][j.neighbor_pointer] = j.conf
       elif (parameter == "num"):
@@ -31,6 +33,8 @@ def dump (G, parameter):
     for j in G.item_list:
       print(adjmat[i][j]), 
     print
+
+  print "EDGE COUNT: "+str(c/2)
 
 def init_rand_users():
   global users_list
@@ -76,25 +80,31 @@ def make_purchases(max_events):
     
 init_rand_users()
 get_items()
-make_purchases(120)
-# choose 2nd parameter from conf, num, or basic
-dump(itemgraph, "num")
-dump(brandgraph, "num")
-
+make_purchases(500)
 print(findcoeffs.find_coeffs())
 
-for i in range(0, len(itemgraph.item_list)):
-  if (itemgraph.item_list[i] not in [x[0] for x in users_list[0].itemrating_list]):
-    print helpers.Ask_For_Prediction_Event (users_list[0].id, itemgraph.item_list[i])
-    break
-for i in range(0, max_users):
-  print "User "+str(i)
-  rec = recommendations.recommendations(users_list[i], 3)
-  if (rec != []):
-    for rec_item in rec:
-      print rec_item[0].name
-      print rec_item[1]
-      print rec_item[2]
-  else:
-    print "No edges emanating from this user's items."
-  print
+# choose 2nd parameter from conf, num, or basic
+dump(itemgraph, "num")
+ #dump(brandgraph, "num")
+
+#print(findcoeffs.test_coeffs())
+
+#for item in itemgraph.item_list:
+#  for edge in item.edge_list:
+#    print (edge.num_ratings, edge.stdev, edge.conf)
+
+# for i in range(0, len(itemgraph.item_list)):
+#   if (itemgraph.item_list[i] not in [x[0] for x in users_list[0].itemrating_list]):
+#     print helpers.Ask_For_Prediction_Event (users_list[0].id, itemgraph.item_list[i])
+#     break
+# for i in range(0, max_users):
+#   print "User "+str(i)
+#   rec = recommendations.recommendations(users_list[i], 3)
+#   if (rec != []):
+#     for rec_item in rec:
+#       print rec_item[0].name
+#       print rec_item[1]
+#       print rec_item[2]
+#   else:
+#     print "No edges emanating from this user's items."
+#   print
